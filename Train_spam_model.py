@@ -3,10 +3,9 @@
 import joblib
 import pandas as pd
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.model_selection import train_test_split
 
-df = pd.read_csv('output/enhanced_spam_dataset.csv')
+df = pd.read_csv('spam_dataset.csv')
 X = df.drop('is_spam', axis=1)
 y = df['is_spam']
 
