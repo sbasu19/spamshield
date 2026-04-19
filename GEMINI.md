@@ -10,7 +10,6 @@ The project consists of a socket server that intercepts messages and validates t
 - **Python 3.12.8**: Primary programming language.
 - **Scikit-learn**: Used for the machine learning model (Random Forest).
 - **Joblib**: Used for model serialization.
-- **SQLite**: `users.db` is present, likely intended for user management and authentication.
 - **Sockets & Threading**: Core technologies for real-time, multi-client chat communication.
 
 ## Project Structure
@@ -18,10 +17,8 @@ The project consists of a socket server that intercepts messages and validates t
 - `Chat_Server.py`: The multi-threaded socket server that handles message routing and real-time numerical feature extraction for spam filtering.
 - `Client.py`: A command-line client for users to connect and chat.
 - `Train_spam_model.py`: A script for training the spam detection model using numerical datasets.
-- `spam_detection_dataset.csv`: The base dataset for training.
-- `output/`: Contains enhanced and modified versions of the spam dataset.
-- `templates/`: HTML templates (`index.html`, `login.html`, `register.html`), indicating a planned or secondary web interface.
-- `users.db`: SQLite database for user data.
+- `spam_dataset.csv`: The base dataset for training the spam filter.
+- `spam_model.pkl`: The compiled machine learning model.
 
 ## Building and Running
 
@@ -50,5 +47,3 @@ The project consists of a socket server that intercepts messages and validates t
 
 - **Numerical Features**: The model is trained on specific features extracted from messages: `num_links`, `num_words`, `has_offer`, `sender_score`, `all_caps`, and `links_per_word`.
 - **Feature Extraction**: `Chat_Server.py` handles the extraction of these features in real-time for each incoming message.
-- **Web Interface**: The templates suggest a Flask or Django component that is currently not fully integrated with the socket server.
-- **Persistence**: User authentication using `users.db` should be integrated into the server-side logic.
