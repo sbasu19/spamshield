@@ -2,7 +2,7 @@ import socket
 import threading
 import sys
 
-SERVER_HOST = '127.0.0.1'
+DEFAULT_SERVER_HOST = '127.0.0.1'
 SERVER_PORT = 5002
 
 def listen(s):
@@ -19,13 +19,16 @@ def listen(s):
     sys.exit()
 
 def start_client():
+    server_host = sys.argv[1] if len(sys.argv) > 1 else DEFAULT_SERVER_HOST
+
     s = socket.socket()
     try:
-        s.connect((SERVER_HOST, SERVER_PORT))
+        s.connect((server_host, SERVER_PORT))
     except Exception as e:
         print(f"Could not connect to server: {e}")
         return
 
+    print(f"Connected to server at {server_host}:{SERVER_PORT}")
     name = input('Name: ')
     s.send(name.encode()) # Send name first
 
